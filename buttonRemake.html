@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>buttonSVG Remake</title>
+
+        <style>
+            :root {
+                --dark-color: #635bff;
+                --light-color: #72ddec;
+            }
+
+            svg {
+                cursor: pointer;
+            }
+
+            #darkGroup {
+                fill: var(--dark-color);
+            }
+            #lightGroup {
+                fill: var(--light-color);
+            }
+
+            #dark1,
+            #light1,
+            #dark2 {
+                transition: all 0.5s ease;
+            }
+
+            #dark1 {
+                transform: translateX(-100%);
+            }
+            svg:hover #light1 {
+                transform: translate(20%);
+            }
+            svg:hover #dark2 {
+                transform: translate(40%);
+                opacity: 0;
+            }
+            svg:hover #dark1 {
+                transform: translate(0%);
+                opacity: 0.8;
+            }
+        </style>
+    </head>
+    <body>
+        <svg
+            width="70"
+            height="80"
+            viewBox="0 0 70 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g id="triangles">
+                <g id="lightGroup">
+                    <path
+                        id="light1"
+                        d="M38.5 39.134C39.1667 39.5189 39.1667 40.4811 38.5 40.866L11.5 56.4545C10.8333 56.8394 10 56.3583 10 55.5885L10 24.4115C10 23.6417 10.8333 23.1606 11.5 23.5455L38.5 39.134Z"
+                        fill-opacity="0.8"
+                    />
+                </g>
+                <g id="darkGroup">
+                    <path
+                        id="dark2"
+                        d="M51.5 39.134C52.1667 39.5189 52.1667 40.4811 51.5 40.866L24.5 56.4545C23.8333 56.8394 23 56.3583 23 55.5885L23 24.4115C23 23.6417 23.8333 23.1606 24.5 23.5455L51.5 39.134Z"
+                        fill-opacity="0.8"
+                    />
+                    <path
+                        id="dark1"
+                        d="M38.5 39.134C39.1667 39.5189 39.1667 40.4811 38.5 40.866L11.5 56.4545C10.8333 56.8394 10 56.3583 10 55.5885L10 24.4115C10 23.6417 10.8333 23.1606 11.5 23.5455L38.5 39.134Z"
+                        fill-opacity="0.8"
+                    />
+                </g>
+            </g>
+        </svg>
+
+        <script>
+            const svg = document.getElementById("triangles");
+            svg.onclick = (event) => {
+                const colors = [
+                    "red",
+                    "blue",
+                    "green",
+                    "orange",
+                    "yellow",
+                    "purple",
+                    "pink",
+                ];
+                const randomn = () =>
+                    colors[Math.floor(Math.random() * colors.length)];
+                document.documentElement.style.cssText = `
+                --dark-color: ${randomn()};
+                --light-color:  ${randomn()};
+                `;
+            };
+        </script>
+    </body>
+</html>
